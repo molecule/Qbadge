@@ -7,7 +7,9 @@
  */
 void bluetoothSetup() {
   Serial.begin(9600);
-    while(!Serial) {;}
+  while(!Serial) {;}
+  Serial.println("AT+DEVNAME=Molly Nicholas");
+  delay(200);
   if (mode == 0) {
     Serial.println("AT+DATA");
   } else  {
