@@ -8,11 +8,11 @@ This little wearable is so much more than it first appears… At this exclusive 
 
 Aside from the beautiful LEDs, the Qbadge also has lots of ways to communicate. The front of the Qbadge has an infrared receiver, an intrared transmitter, a button to trigger an action, and a microphone. 
 
-![alt tag](http://imgur.com/TSINq4r)
+![Click to see the front of the badge.](http://imgur.com/TSINq4r)
 
 On the inside, there’s also a BLE module tucked away beneath the main processor board.
 
-![alt tag](http://imgur.com/JZkmjEx)
+![Click to see the inside of the badge](http://imgur.com/JZkmjEx)
 
 ##Helpful videos
 How to open, close, and power on your Qbadge:
