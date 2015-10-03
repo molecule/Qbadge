@@ -49,7 +49,7 @@ void ir_loop() {
     uint32_t pixels_to_light = compareAnswers(sending, irCode);
     //Light up NeoPixels based on the number of matching questions
     comparisonLights(pixels_to_light, green);
-    delay(60000);
+    delay(30000);
     chase();
   } else if (irCode != 0) {
     chasePersist(strip.numPixels(), yellowOrange);
