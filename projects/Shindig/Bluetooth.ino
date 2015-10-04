@@ -8,10 +8,10 @@
 void bluetoothSetup() {
   Serial.begin(9600);
   while(!Serial) {;}
-  Serial.println("AT+DEVNAME=Molly Nicholas");
-  delay(200);
+  Serial.println("AT+DEVNAME=Alankrita Dayal");
+  delay(500);
   if (mode == 0) {
-    Serial.println("AT+DATA");
+    // Do nothing, default is to start up in DATA mode.
   } else  {
     char buffer[32];
     sprintf(buffer,"AT+QBEACON=%02X,%02X",badge_id_me, badge_id_you);
