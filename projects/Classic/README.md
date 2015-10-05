@@ -2,9 +2,12 @@
 
 ##General Info
 The pin for the badges is "1234"
+The main difference between Qbadge Classics and Qbadge v2s is the bluetooth module. 
+Qbadge Classic: HC-05 Bluetooth 2.0 module
+Qbadge v2: BLE Nano Bluetooth 4.0 module
 
 If you'd like to connect to the badges using an Android app, you can try any called "Bluetooth Terminal". 
-I've tried about four differnet apps and they all seem to work pretty well.
+I've tried about four different apps and they all seem to work pretty well.
 
 Instructions for how to install the Adafruit Neopixel libraries: 
 
