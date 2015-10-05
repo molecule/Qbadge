@@ -8,7 +8,7 @@
 void bluetoothSetup() {
   Serial.begin(9600);
   while(!Serial) {;}
-  Serial.println("AT+DEVNAME=Alankrita Dayal");
+  Serial.println("AT+DEVNAME=Molly Nicholas");
   delay(500);
   if (mode == 0) {
     // Do nothing, default is to start up in DATA mode.
