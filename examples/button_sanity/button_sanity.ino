@@ -4,7 +4,7 @@
   */
 
 const int led = 13; // blink built in LED
-const int buttonPin = 6;
+const int buttonPin = 8;
 int buttonVal = LOW;
 
 void setup() {
