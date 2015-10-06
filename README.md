@@ -14,6 +14,17 @@ On the inside, there’s also a BLE module tucked away beneath the main processo
 
 <img style="float: center;" src="http://i.imgur.com/JZkmjEx.png">
 
+##Getting started
+
+To load code onto your Qbadge, you can use a site called "CodeBender":
+
+https://codebender.cc/
+
+Follow these instructions to install the IDE to work with the Pro Trinket inside your Qbadge:
+
+https://learn.adafruit.com/introducing-pro-trinket/starting-the-bootloader
+
+
 ##Helpful videos
 How to open, close, and power on your Qbadge:
 https://www.youtube.com/watch?v=6eYyS4wtiWs
