@@ -24,6 +24,10 @@ Follow these instructions to install the IDE to work with the Pro Trinket inside
 
 https://learn.adafruit.com/introducing-pro-trinket/starting-the-bootloader
 
+You'll also need the Adafruit Neopixel library: 
+
+https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
+
 
 ##Helpful videos
 How to open, close, and power on your Qbadge:
