@@ -16,6 +16,13 @@ Instructions for how to install the Adafruit Neopixel libraries:
 
 https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
 
+More info on the exact HC-05 modules inside:
+
+http://www.instructables.com/id/Arduino-AND-Bluetooth-HC-05-Connecting-easily/
+
+http://www.amazon.com/JBtek-Wireless-Bluetooth-Transceiver-Arduino/dp/B00L083QAC?tag=s4charity-20
+
+
 ##Video Walkthroughs
 Uploading code. NOTE: I don't mention it in the video, but please be sure to unplug the grey wire and 
 the white wire from the Pro Trinket before uploading. The USB bootloader on the Pro Trinket
