@@ -33,6 +33,8 @@ const int buttonPin = 8;  // #6 on port D, #8 on port B
 int switchPin = 9;        // #9 on port B
 int buttonVal = LOW;
 
+const int partyPin = 6; // #6 on port D
+
 //******* Bluetooth ******//
 String AT_COMMAND_RX_SUCCESSFUL = String("OK");
 String AT_COMMAND_RX_FAILED = String("ERROR");
@@ -91,7 +93,7 @@ int NUM_QUESTIONS = 18;
 #define NEOPIXEL_PIN 4
 #define NUM_LEDS 18
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
-int brightness = 85;
+int brightness = 90;
 int delayVal = 50;
 int pulseDelay = 20;
 int DISPLAY_DELAY = 5000;//ms
@@ -188,7 +190,7 @@ IRsend irsend;
 uint32_t sending = 0;
 uint32_t header = 0x86000000; // 7 bits
 
-uint8_t badge_id_me = 0xb8; // 7 bits
+uint8_t badge_id_me = 0xb8; // 7 bits 184
 uint8_t badge_id_you = 0xFF; // 0xFF no id received over IR
 int mode = 0; // 0: answer questions, 1: send/receive IR
 
@@ -207,6 +209,11 @@ void setup() {
   } else {
     mode = 0;
     digitalWrite(13, LOW);
+  }
+
+  pinMode(partyPin, INPUT);
+  if (digitalRead(partyPin) == LOW) {
+    mode = 2;
   }
 
   // Timer setup
@@ -263,8 +270,10 @@ void setup() {
 void loop() {
   if(mode == 0) {
     displayBasedOnInput( readFromBluetooth() );
-  } else {
+  } else if (mode == 1) {
     ir_loop();
+  } else if (mode == 2) {
+    partyMode();
   }
 }
 
@@ -325,3 +334,17 @@ void switch_it()
   }
   last_switch_value = switch_value;
 }
+
+void switchToPartyMode() {
+  mode = 2;
+}
+
+void partyMode() {
+  for (int i = 1; i <= NUM_QUESTIONS; i++) {
+    callFunction(i);
+    delay(DISPLAY_DELAY/3);
+    callFunction(0);
+    delay(30);
+  }
+}
+
