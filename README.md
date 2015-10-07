@@ -8,11 +8,26 @@ This little wearable is so much more than it first appears… At this exclusive 
 
 Aside from the beautiful LEDs, the Qbadge also has lots of ways to communicate. The front of the Qbadge has an infrared receiver, an intrared transmitter, a button to trigger an action, and a microphone. 
 
-![Click to see the front of the badge.](http://imgur.com/TSINq4r)
+<img style="float: center;" src="http://i.imgur.com/TSINq4r.png">
 
 On the inside, there’s also a BLE module tucked away beneath the main processor board.
 
-![Click to see the inside of the badge](http://imgur.com/JZkmjEx)
+<img style="float: center;" src="http://i.imgur.com/JZkmjEx.png">
+
+##Getting started
+
+To load code onto your Qbadge, you can use a site called "CodeBender":
+
+https://codebender.cc/
+
+Follow these instructions to install the IDE to work with the Pro Trinket inside your Qbadge:
+
+https://learn.adafruit.com/introducing-pro-trinket/starting-the-bootloader
+
+You'll also need the Adafruit Neopixel library: 
+
+https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
+
 
 ##Helpful videos
 How to open, close, and power on your Qbadge:

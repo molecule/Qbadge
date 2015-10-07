@@ -8,7 +8,6 @@ GND			GND
 
 
 Android application needed:
-
 Bluetooth Terminal 
 
 Open application 
@@ -18,3 +17,7 @@ Click on HC05
 Pin if requested : 1234
 
 Once paired, should see whatever string is printed in loop() on the screen.
+
+Watch this video for how to connect from a Mac computer:
+
+https://www.youtube.com/watch?v=gR_pwT6IPN8
