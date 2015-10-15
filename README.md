@@ -32,3 +32,9 @@ https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
 ##Helpful videos
 How to open, close, and power on your Qbadge:
 https://www.youtube.com/watch?v=6eYyS4wtiWs
+
+Networking mode demo:
+https://www.youtube.com/watch?v=jLXpunxlupk
+
+Question Quest mode demo:
+https://www.youtube.com/watch?v=DJcJaX-GzcY
