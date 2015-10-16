@@ -28,6 +28,24 @@ You'll also need the Adafruit Neopixel library:
 
 https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
 
+And the IR Remote library (be sure to download V1.0):
+
+https://github.com/z3t0/Arduino-IRremote/releases
+
+###Helpful Guides
+
+Info for installing Arduino libraries:
+
+https://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use/arduino-libraries
+
+Info about the Pro Trinket 3V inside the Qbadge:
+
+https://learn.adafruit.com/introducing-pro-trinket/overview
+
+Info about the BLE Nano inside the Qbadge:
+
+http://redbearlab.com/blenano/
+
 
 ##Helpful videos
 How to open, close, and power on your Qbadge:
