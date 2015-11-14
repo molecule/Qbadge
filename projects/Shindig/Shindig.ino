@@ -190,7 +190,7 @@ IRsend irsend;
 uint32_t sending = 0;
 uint32_t header = 0x86000000; // 7 bits
 
-uint8_t badge_id_me = 0xb8; // 7 bits 184
+uint8_t badge_id_me = 0x86; // 7 bits 135
 uint8_t badge_id_you = 0xFF; // 0xFF no id received over IR
 int mode = 0; // 0: answer questions, 1: send/receive IR
 
