@@ -33,8 +33,6 @@ const int buttonPin = 8;  // #6 on port D, #8 on port B
 int switchPin = 9;        // #9 on port B
 int buttonVal = LOW;
 
-const int partyPin = 6; // #6 on port D
-
 //******* Bluetooth ******//
 String AT_COMMAND_RX_SUCCESSFUL = String("OK");
 String AT_COMMAND_RX_FAILED = String("ERROR");
@@ -194,7 +192,11 @@ uint8_t badge_id_me = 0x86; // 7 bits 135
 uint8_t badge_id_you = 0xFF; // 0xFF no id received over IR
 int mode = 0; // 0: answer questions, 1: send/receive IR
 
+unsigned long timeStarted = 0;
+
 void setup() {
+
+  timeStarted = millis();
   //Set up on-board LED
   pinMode(13, OUTPUT);
 
@@ -209,11 +211,6 @@ void setup() {
   } else {
     mode = 0;
     digitalWrite(13, LOW);
-  }
-
-  pinMode(partyPin, INPUT);
-  if (digitalRead(partyPin) == LOW) {
-    mode = 2;
   }
 
   // Timer setup
@@ -271,9 +268,12 @@ void loop() {
   if(mode == 0) {
     displayBasedOnInput( readFromBluetooth() );
   } else if (mode == 1) {
-    ir_loop();
-  } else if (mode == 2) {
-    partyMode();
+    unsigned long timePassed = millis() - timeStarted;
+    if (timePassed < 300000) {
+      ir_loop();
+    } else {
+      callFunction(17);
+    }
   }
 }
 
@@ -333,18 +333,5 @@ void switch_it()
     }
   }
   last_switch_value = switch_value;
-}
-
-void switchToPartyMode() {
-  mode = 2;
-}
-
-void partyMode() {
-  for (int i = 1; i <= NUM_QUESTIONS; i++) {
-    callFunction(i);
-    delay(DISPLAY_DELAY/3);
-    callFunction(0);
-    delay(30);
-  }
 }
 
