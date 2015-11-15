@@ -9,51 +9,51 @@ uint32_t myAnswers() {
 
     // Are you interested in 5G?
     Answer = yes;
-    myIRCode = myIRCode + (Answer<<17);
+    myIRCode = myIRCode + (Answer<<11);
 
     // Are you interested in P2P/D2D?
     Answer = no;
-    myIRCode = myIRCode + (Answer<<16);
-
-    // Are you interested in M2M/IoT?
-    Answer = yes;
-    myIRCode = myIRCode + (Answer<<15);
-
-    // Are you interested in Green Communications?
-    Answer = yes;
-    myIRCode = myIRCode + (Answer<<14);
-
-    // Are you interested in Smart Grid?
-    Answer = no;
-    myIRCode = myIRCode + (Answer<<13);
-
-    // Are you interested in Wireless Charging?
-    Answer = no;
-    myIRCode = myIRCode + (Answer<<12);
-
-    // Are you interested in Smart Health?
-    Answer = no;
-    myIRCode = myIRCode + (Answer<<11);
-
-    // Are you interested in Cloud Computing?
-    Answer = yes;
     myIRCode = myIRCode + (Answer<<10);
 
-    // Are you interested in Automotive?
+    // Are you interested in M2M/IoT?
     Answer = no;
     myIRCode = myIRCode + (Answer<<9);
 
-    // Are you interested in Software Defined Networks?
+    // Are you interested in Green Communications?
     Answer = yes;
     myIRCode = myIRCode + (Answer<<8);
 
-    // Are you interested in Small Cells?
-    Answer = yes;
+    // Are you interested in Smart Grid?
+    Answer = no;
     myIRCode = myIRCode + (Answer<<7);
 
-    // Are you interested in LTE-U/LAA?
+    // Are you interested in Wireless Charging?
     Answer = yes;
     myIRCode = myIRCode + (Answer<<6);
+
+    // Are you interested in Smart Health?
+    Answer = no;
+    myIRCode = myIRCode + (Answer<<5);
+
+    // Are you interested in Cloud Computing?
+    Answer = yes;
+    myIRCode = myIRCode + (Answer<<4);
+
+    // Are you interested in Automotive?
+    Answer = yes;
+    myIRCode = myIRCode + (Answer<<3);
+
+    // Are you interested in Software Defined Networks?
+    Answer = yes;
+    myIRCode = myIRCode + (Answer<<2);
+
+    // Are you interested in Small Cells?
+    Answer = yes;
+    myIRCode = myIRCode + (Answer<<1);
+
+    // Are you interested in LTE-U/LAA?
+    Answer = no;
+    myIRCode = myIRCode + (Answer<<0);
 
 
     /******** END SURVEY ********/
