@@ -96,6 +96,21 @@ uint16_t listenForIR() {  // IR receive code
   }
 }
 
+uint32_t COLOR_MAP[] = {
+  hot_pink,
+  turquoise,
+  leaf_green,
+  purple,
+  yellowOrange,
+  white,
+  red,
+  salmon_pink,
+  blue,
+  green,
+  yellow,
+  mediumSpringGreen
+};
+
 
 /**
  * Turns on the LEDs according to the answers.
@@ -104,11 +119,11 @@ uint16_t listenForIR() {  // IR receive code
  */
 static void comparisonLights(uint32_t pixels_to_light, uint32_t c) {
  uint32_t temp = pixels_to_light;
- for(int i=0;i<18;i++) {
+ for(int i=0;i<12;i++) {
       if ((temp & 0x0001) == 0x0001) {
-        strip.setPixelColor(i, c);
+        strip.setPixelColor(i, COLOR_MAP[i]);
       } else {
-        strip.setPixelColor(i, hot_pink);
+        strip.setPixelColor(i, 0);
       }
       temp = temp>>1;
   }
