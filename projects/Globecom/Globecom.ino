@@ -251,7 +251,7 @@ void setup() {
   functionPtrs[99] = red_flash;
 
   // Bluetooth setup
-  bluetoothSetup();
+  //bluetoothSetup();
 
   // IR setup
   sending = (header | (((uint32_t)badge_id_me)<<18));
