@@ -14,7 +14,39 @@ On the inside, there’s also a BLE module tucked away beneath the main processo
 
 <img style="float: center;" src="http://i.imgur.com/JZkmjEx.png">
 
-##Getting started
+## Set up your computer to work with the Gemma boards
+### 1. The first step is to download and install the drivers.
+
+a. Go to [download the drivers from Adafruit](https://learn.adafruit.com/adafruit-arduino-ide-setup/windows-setup).
+
+OR
+
+a. Go to [codebender.cc](Codebender.cc). Register a new account. Create a new profile and just go through each of the steps. It will download and install the drivers.
+
+c. When it asks you for the board, select the Adafruit Gemma 8MHz made by Adafruit. It will 
+automatically select the correct programmer, which is USBTinyISP. NOTE: You can stop after the drivers
+have installed, OR you can go all the way to the end of the "Getting Started" sequence, and load 
+“blink” onto your Gemma as a test. Don't forget to put your Gemma into "Bootloader" mode by pressing
+the "reset" button on the board.
+
+<img style="float: center;" src="http://i.imgur.com/S5buZln.png">
+
+### 2. Follow these instructions to download and install the Integrated Development Environment (IDE). 
+
+An "IDE" is basically a fancy text editor that you will use to make changes to the code. Similar to how Microsoft Word is a place to type letters, essays, etc, in your IDE you'll type code!
+
+a. First you'll download and install the Arduino IDE from this link. You may need to select "YES" if it asks you to make changes to the computer.:
+[Arduino IDE download](https://www.arduino.cc/en/Main/Software)
+
+b. Once you've installed the IDE, continue with the instructions under "Super Easy Installation" at the next link. The last step you need to do on this list is adding the "Contributed boards" in the "Board Manager." 
+
+https://learn.adafruit.com/adafruit-arduino-ide-setup/arduino-1-dot-6-x-ide
+
+c. NOTE: You don't need to download the drivers, or do the "Easy Installation." 
+Once you've added the "Contributed boards" you are finished with this step.
+
+### 3. You also need to install the Adafruit Neopixel library. Follow instructions here:
+https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
 
 To load code onto your Qbadge, you can use a site called "CodeBender":
 
