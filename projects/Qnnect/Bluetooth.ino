@@ -124,6 +124,8 @@ void displayBasedOnInput(String response) {
     else if (response == String("LOW ENERGY")) {
       questionsAnswered |= QUESTION_MASK_EIGHTEEN;
       callFunction(18);
+    } else if (response == String("1")) {
+      sparkleOne(1);
     }
     else {
       callFunction(99);
