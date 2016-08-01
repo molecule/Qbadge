@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Molly Nicholas
+ * Copyright (c) 2015, 2016 Molly Nicholas
  *
  * All rights reserved.
  *
@@ -14,7 +14,7 @@
  * and the following disclaimer in the documentation and/or other materials provided with the
  * distribution.
  *
- * Neither the name of Molly Nicholas nor the names of its contributors may be used to
+ * Neither the name of Qbadge nor the names of its contributors may be used to
  * endorse or promote products derived from this software without specific prior written permission.
  *
  * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS
@@ -84,7 +84,7 @@ uint32_t questionsAnswered  = 0x0;
 
 int NUM_QUESTIONS = 18;
 
-//******** Neopixel *********** //
+//******** Neopixel ***********//
 #include <Adafruit_NeoPixel.h>
 #include <avr/power.h>
 
