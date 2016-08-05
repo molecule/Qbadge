@@ -124,7 +124,19 @@ uint16_t buggy(uint8_t input) {
 //**********************************************************************************//
 //**********************************************************************************//
 
-// 
+// There are four parts to this puzzle. You'll have to solve all four to get the
+// answer!
+
+// Part 1: Clue from "most beautiful thingie"
+
+// Part 2: Clue from CT
+
+// Part 3: Clue from place
+
+// Part 3: Clue from puzzle #1
+
+// Put it all together to answer this question:
+// What is the significance of this value as it relates to Grace Hopper?
 uint32_t A = 0xB;
 uint32_t B = 0xD;
 uint32_t C = 0x8;
