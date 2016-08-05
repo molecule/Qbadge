@@ -64,7 +64,7 @@ uint32_t irCode = 0;
 const uint32_t IR_PUZZLE_GUESS     = 0x8322FFFF;
 const uint32_t IR_PUZZLE_THREE     = 0x8322A659;
 const uint32_t IR_PUZZLE_ONE       = 0x8322AE51;
-const uint32_t IR_PUZZLE_TWO       = 0x8322A25D;
+
 
 const uint32_t IR_HEADER = 0x83220000;
 
@@ -73,6 +73,8 @@ uint32_t sending = IR_PUZZLE_GUESS;
 
 
 void setup() {
+
+  Serial.begin(9600);
   // Buttons setup
   pinMode(buttonPin, INPUT);
   enablePinInterupt(buttonPin);
@@ -88,8 +90,8 @@ void setup() {
  * for Puzzle #2, and you can move on to solving that one. Happy puzzling!
  */
 void loop() {
-  puzzleOne();
-  //puzzleTwo();
+  //puzzleOne();
+  puzzleTwo();
   //puzzleThree();
 
 }
@@ -122,17 +124,36 @@ uint16_t buggy(uint8_t input) {
 //**********************************************************************************//
 //**********************************************************************************//
 
-// Maybe the correct answer to the first puzzle makes the badge glow BLUE.
-// So the word "BLUE" is the hint to for the second puzzle. Imagine some ints:
-// #define B = 2;
-// #define C = 3;
-// ...
-// #define E = 7;
-// ...
-// etc with a lot of different letters. Their job is to find the "B", "L", "U", 
-// and "E" and use those in puzzleTwo.
+// 
+uint32_t A = 0xB;
+uint32_t B = 0xD;
+uint32_t C = 0x8;
+uint32_t D = 0xF;
+uint32_t E = 0x5;
+uint32_t F = 0xB;
+uint32_t G = 0x1;
+uint32_t H = 0x4;
+uint32_t I = 0xA;
+uint32_t J = 0x6;
+uint32_t K = 0x8;
+uint32_t L = 0x2;
+uint32_t M = 0x2;
+uint32_t N = 0x9;
+uint32_t O = 0x3;
+uint32_t P = 0x2;
+uint32_t Q = 0x7;
+uint32_t R = 0xD;
+uint32_t S = 0xD;
+uint32_t T = 0x0;
+uint32_t U = 0x2;
+uint32_t V = 0xC;
+uint32_t W = 0xE;
+uint32_t X = 0x6;
+uint32_t Y = 0x1;
+uint32_t Z = 0xA;
+
 void puzzleTwo() {
-  sending = IR_PUZZLE_GUESS;
+  sending = (C << 28) + (O << 24) + (M << 20) + (P << 16) + (I << 12) + (L << 8) + (E << 4) + (R);
 }
 
 
