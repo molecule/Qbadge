@@ -113,11 +113,12 @@ void puzzleOne() {
   sending = IR_HEADER | buggy(input_val);
 }
 
-// Hmmmm something here doesn't look quite right...
+// Hmmmm something doesn't look quite right here...
+// Find the bug in this method, and fix it to move on to puzzle #2.
 uint16_t buggy(uint8_t input) {
   uint8_t constant_value = BIG_VALUE;
-  uint8_t result = constant_value * input; //BUG BUG BUG
-  return result; //OUTPUTS RED
+  uint8_t result = constant_value * input;
+  return result;
 }
 
 
