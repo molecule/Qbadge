@@ -64,20 +64,21 @@ uint32_t irCode = 0;
 const uint32_t IR_PUZZLE_GUESS     = 0x8322FFFF;
 const uint32_t IR_REMOTE_POWER     = 0x8322A15E;
 const uint32_t IR_PUZZLE_THREE     = 0x8322A659;
-const uint32_t IR_PUZZLE_TWO       = 0x8322AE51;
-const uint32_t IR_REMOTE_V_UP      = 0x8322A25D;
+const uint32_t IR_PUZZLE_ONE       = 0x8322AE51;
+const uint32_t IR_PUZZLE_TWO       = 0x8322A25D;
 const uint32_t IR_REMOTE_V_DOWN    = 0x8322A35C;
 const uint32_t IR_REMOTE_MODE      = 0x8322B24D;
 const uint32_t IR_REMOTE_REWIND    = 0x8322A55A;
 const uint32_t IR_REMOTE_PLAY      = 0x8322B04F;
 const uint32_t IR_REMOTE_FORWARD   = 0x8322A45B;
 
+const uint32_t IR_HEADER = 0x83220000;
+
 IRsend irsend;
 uint32_t sending = IR_PUZZLE_GUESS;
 
 
 void setup() {
-  // put your setup code here, to run once:
   // Buttons setup
   pinMode(buttonPin, INPUT);
   enablePinInterupt(buttonPin);
@@ -87,25 +88,44 @@ void setup() {
   strip.show(); // Initialize all pixels to 'off'
 }
 
-// When you're ready to try your answer to the first puzzle, just
-// uncomment out the line of code that says "puzzleOne(). For the second
-// puzzle, you'll do puzzleTwo(), and the same for the third puzzle.
+/* When you're ready to try your answer to the first puzzle, just uncomment the line
+ * of code that says "puzzleOne()". Once you upload your solution to the badge, you can
+ * head over to Puzzle Station #1 to test it out. If you got it right, you'll see a hint
+ * for Puzzle #2, and you can move on to solving that one. Happy puzzling!
+ */
 void loop() {
-  // put your main code here, to run repeatedly:
   puzzleOne();
   //puzzleTwo();
   //puzzleThree();
 
 }
 
-// A hint that gives away from information about puzzle one. Maybe it's a clue
-// about the name of a library, or a reference to which IR signal they have to
-// send here in order to unlock the first clue.
+//**********************************************************************************//
+//**********************************************************************************//
+//*********************************** PUZZLE ONE ***********************************//
+//**********************************************************************************//
+//**********************************************************************************//
+
+const uint16_t BIG_VALUE = 0x1DD7;
+const uint8_t SOMEWHAT_BIG_VALUE = 0x17;
 void puzzleOne() {
-  sending = IR_PUZZLE_GUESS;
+  uint8_t input_val = SOMEWHAT_BIG_VALUE;
+  sending = IR_HEADER | buggy(input_val);
+}
+
+// Hmmmm something here doesn't look quite right...
+uint16_t buggy(uint8_t input) {
+  uint8_t constant_value = BIG_VALUE;
+  uint8_t result = constant_value * input; //BUG BUG BUG
+  return result; //OUTPUTS RED
 }
 
 
+//**********************************************************************************//
+//**********************************************************************************//
+//*********************************** PUZZLE TWO ***********************************//
+//**********************************************************************************//
+//**********************************************************************************//
 
 // Maybe the correct answer to the first puzzle makes the badge glow BLUE.
 // So the word "BLUE" is the hint to for the second puzzle. Imagine some ints:
@@ -117,18 +137,28 @@ void puzzleOne() {
 // etc with a lot of different letters. Their job is to find the "B", "L", "U", 
 // and "E" and use those in puzzleTwo.
 void puzzleTwo() {
-  
+  sending = IR_PUZZLE_GUESS;
 }
+
+
+//**********************************************************************************//
+//**********************************************************************************//
+//********************************** PUZZLE THREE **********************************//
+//**********************************************************************************//
+//**********************************************************************************//
 
 void puzzleThree() {
-  sending = IR_PUZZLE_THREE;
+  sending = IR_PUZZLE_GUESS;
 }
 
 
 
 
 
-
+/*
+ * This method gets called when you press the button on the front of the badge.
+ * It sends the 32-bit integer stored in "sending".
+ */
 void button_press() {
   irsend.sendNEC(sending, 32);
 }
