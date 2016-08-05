@@ -61,9 +61,10 @@ uint16_t currentpulse = 0; // index for pulses we're storing
 uint32_t irCode = 0;
 
 //********* IR Send *********//
+const uint32_t IR_PUZZLE_GUESS     = 0x8322FFFF;
 const uint32_t IR_REMOTE_POWER     = 0x8322A15E;
-const uint32_t IR_REMOTE_SELECT    = 0x8322A659;
-const uint32_t IR_REMOTE_MUTE      = 0x8322AE51;
+const uint32_t IR_PUZZLE_THREE     = 0x8322A659;
+const uint32_t IR_PUZZLE_TWO       = 0x8322AE51;
 const uint32_t IR_REMOTE_V_UP      = 0x8322A25D;
 const uint32_t IR_REMOTE_V_DOWN    = 0x8322A35C;
 const uint32_t IR_REMOTE_MODE      = 0x8322B24D;
@@ -72,12 +73,7 @@ const uint32_t IR_REMOTE_PLAY      = 0x8322B04F;
 const uint32_t IR_REMOTE_FORWARD   = 0x8322A45B;
 
 IRsend irsend;
-uint32_t sending = 0;
-uint32_t header = 0x86000000; // 7 bits
-
-uint8_t badge_id_me = 0x86; // 7 bits 135
-uint8_t badge_id_you = 0xFF; // 0xFF no id received over IR
-int mode = 0; // 0: answer questions, 1: send/receive IR
+uint32_t sending = IR_PUZZLE_GUESS;
 
 
 void setup() {
@@ -89,7 +85,6 @@ void setup() {
   // Neopixel setup
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
-
 }
 
 // When you're ready to try your answer to the first puzzle, just
@@ -97,6 +92,9 @@ void setup() {
 // puzzle, you'll do puzzleTwo(), and the same for the third puzzle.
 void loop() {
   // put your main code here, to run repeatedly:
+  puzzleOne();
+  //puzzleTwo();
+  //puzzleThree();
 
 }
 
@@ -104,9 +102,10 @@ void loop() {
 // about the name of a library, or a reference to which IR signal they have to
 // send here in order to unlock the first clue.
 void puzzleOne() {
-
-  
+  sending = IR_PUZZLE_GUESS;
 }
+
+
 
 // Maybe the correct answer to the first puzzle makes the badge glow BLUE.
 // So the word "BLUE" is the hint to for the second puzzle. Imagine some ints:
@@ -122,6 +121,14 @@ void puzzleTwo() {
 }
 
 void puzzleThree() {
-  
+  sending = IR_PUZZLE_THREE;
 }
 
+
+
+
+
+
+void button_press() {
+  irsend.sendNEC(sending, 32);
+}
