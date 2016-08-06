@@ -110,7 +110,9 @@ void puzzleOne() {
 }
 
 // Hmmmm something doesn't look quite right here...
-// Find the bug in this method, and fix it to move on to puzzle #2.
+// Find the bug in this method, and fix it. Once you've created your solution,
+// you can test it out by bringing your Qbadge over to Puzzle Station #1. Hit
+// the button to see if you can get a new clue from the puzzle station!
 uint16_t buggy(uint8_t input) {
   uint8_t constant_value = BIG_VALUE;
   uint8_t result = constant_value * input;
@@ -165,7 +167,7 @@ uint32_t Y = 0x1;
 uint32_t Z = 0xA;
 
 void puzzleTwo() {
-  sending = (C << 28) + (O << 24) + (M << 20) + (P << 16) + (I << 12) + (L << 8) + (E << 4) + (R);
+  sending = (A << 28) + (B << 24) + (C << 20) + (D << 16) + (E << 12) + (F << 8) + (G << 4) + (H);
 }
 
 
