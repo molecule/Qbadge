@@ -61,11 +61,7 @@ uint16_t currentpulse = 0; // index for pulses we're storing
 uint32_t irCode = 0;
 
 //********* IR Send *********//
-const uint32_t IR_PUZZLE_GUESS     = 0x8322FFFF;
-const uint32_t IR_PUZZLE_THREE     = 0x8322A659;
-const uint32_t IR_PUZZLE_ONE       = 0x8322AE51;
-
-
+const uint32_t IR_PUZZLE_GUESS     = 0x8322A650;
 const uint32_t IR_HEADER = 0x83220000;
 
 IRsend irsend;
@@ -73,8 +69,8 @@ uint32_t sending = IR_PUZZLE_GUESS;
 
 
 void setup() {
-
   Serial.begin(9600);
+  
   // Buttons setup
   pinMode(buttonPin, INPUT);
   enablePinInterupt(buttonPin);
@@ -90,8 +86,8 @@ void setup() {
  * for Puzzle #2, and you can move on to solving that one. Happy puzzling!
  */
 void loop() {
-  //puzzleOne();
-  puzzleTwo();
+  puzzleOne();
+  //puzzleTwo();
   //puzzleThree();
 
 }
@@ -139,7 +135,9 @@ uint16_t buggy(uint8_t input) {
 
 // Put it all together to answer this question:
 // What is the significance of this value as it relates to Grace Hopper?
-// Something new was created. Now pass that along in puzzleTwo() below.
+// Something new was created. Provide the name of that invention in puzzleTwo() below,
+// then head over to Puzzle Station #2 to test your answer! If you get it right,
+// you'll see a new clue that will help you solve Puzzle #3.
 uint32_t A = 0xB;
 uint32_t B = 0xD;
 uint32_t C = 0x8;
@@ -178,12 +176,18 @@ void puzzleTwo() {
 //**********************************************************************************//
 //**********************************************************************************//
 
+// "Humans are allergic to change. They love to say 'we've always done it this way.'
+// I try to fight that. _________________________________"
 void puzzleThree() {
-  sending = IR_PUZZLE_GUESS;
+  sending = IR_PUZZLE_GUESS | officeFurniture();
 }
 
-
-
+// Grace Hopper had some very unique office furniture. Puzzle Station #2 was an
+// abstract recreation of one of her most famous pieces. What information do
+// you get from it? Return the value here.
+uint32_t officeFurniture() {
+  return 4;
+}
 
 
 /*
