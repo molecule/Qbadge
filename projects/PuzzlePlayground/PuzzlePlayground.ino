@@ -139,6 +139,7 @@ uint16_t buggy(uint8_t input) {
 
 // Put it all together to answer this question:
 // What is the significance of this value as it relates to Grace Hopper?
+// Something new was created. Now pass that along in puzzleTwo() below.
 uint32_t A = 0xB;
 uint32_t B = 0xD;
 uint32_t C = 0x8;
@@ -186,8 +187,12 @@ void puzzleThree() {
 
 
 /*
+ * Don't change this method!
+ *
  * This method gets called when you press the button on the front of the badge.
  * It sends the 32-bit integer stored in "sending".
+ *
+ * Don't change this method!
  */
 void button_press() {
   irsend.sendNEC(sending, 32);
