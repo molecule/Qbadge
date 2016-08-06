@@ -70,7 +70,7 @@ uint32_t sending = IR_PUZZLE_GUESS;
 
 void setup() {
   Serial.begin(9600);
-  
+
   // Buttons setup
   pinMode(buttonPin, INPUT);
   enablePinInterupt(buttonPin);
