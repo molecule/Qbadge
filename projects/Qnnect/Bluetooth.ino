@@ -127,7 +127,9 @@ void displayBasedOnInput(String response) {
     } else if (response.indexOf("LED") >= 0) {
       int index = response.indexOf("LED");
       response.remove(index, 3);
-      sparkleOne(response.toInt());
+      sparkleOneFadeToBlack(response.toInt());
+      reportCorrectQuestions();
+      return;
     }
     else {
       callFunction(99);
