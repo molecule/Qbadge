@@ -416,16 +416,16 @@ static void sparkleOne(int pinNum) {
 static void sparkleOneFadeToBlack(int pinNum) {
    strip.setPixelColor(pinNum, strip.Color(50, 50, 50));
    strip.show();
-   int transition = 50; 
-   
+   int transition = 50;
+
    int Rstart = 50;
-   int Gstart = 50; 
+   int Gstart = 50;
    int Bstart = 50;
-   
+
    int Rend = 0;
    int Gend = 0;
    int Bend = 0;
-   
+
    for(int i = 0; i < transition; i++) // larger values of 'transition' will give a smoother/slower transition.
    {
        float Rnew = Rstart + (Rend - Rstart) * i / transition;
@@ -435,7 +435,7 @@ static void sparkleOneFadeToBlack(int pinNum) {
       strip.setPixelColor(pinNum, strip.Color(Rnew, Gnew, Bnew));
       delay(10);
       strip.show();
-   }   
+   }
 }
 
 void cycle_color_flash(int rStart, int gStart, int bStart) {
