@@ -84,7 +84,7 @@ uint32_t questionsAnswered  = 0x0;
 
 int NUM_QUESTIONS = 18;
 
-//******** Neopixel ***********//
+//******** Neopixel *********** //
 #include <Adafruit_NeoPixel.h>
 #include <avr/power.h>
 
@@ -174,10 +174,8 @@ uint16_t currentpulse = 0; // index for pulses we're storing
 uint32_t irCode = 0;
 
 //********* IR Send *********//
+
 const uint32_t IR_REMOTE_POWER     = 0x8322A15E;
-const uint32_t IR_REMOTE_SELECT    = 0x8322A659;
-const uint32_t IR_REMOTE_MUTE      = 0x8322AE51;
-const uint32_t IR_REMOTE_V_UP      = 0x8322A25D;
 const uint32_t IR_REMOTE_V_DOWN    = 0x8322A35C;
 const uint32_t IR_REMOTE_MODE      = 0x8322B24D;
 const uint32_t IR_REMOTE_REWIND    = 0x8322A55A;

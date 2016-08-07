@@ -124,8 +124,10 @@ void displayBasedOnInput(String response) {
     else if (response == String("LOW ENERGY")) {
       questionsAnswered |= QUESTION_MASK_EIGHTEEN;
       callFunction(18);
-    } else if (response == String("1")) {
-      sparkleOne(1);
+    } else if (response.indexOf("LED") >= 0) {
+      int index = response.indexOf("LED");
+      response.remove(index, 3);
+      sparkleOne(response.toInt());
     }
     else {
       callFunction(99);

@@ -33,7 +33,7 @@ void ir_loop() {
     chasePersist(strip.numPixels(), turquoise);
     chase();
   }
-  else if (irCode == IR_REMOTE_SELECT) {
+  else if (irCode == IR_PUZZLE_THREE) {
     chasePersist(strip.numPixels(), hot_pink);
     chase();
   } else if (received_header == 0x86) {
