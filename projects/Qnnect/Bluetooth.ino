@@ -8,7 +8,7 @@
 void bluetoothSetup() {
   Serial.begin(9600);
   while(!Serial) {;}
-  Serial.println("AT+DEVNAME=Molly Nicholas");
+  Serial.println("AT+DEVNAME=Station Ten");
   delay(500);
   if (mode == 0) {
     // Do nothing, default is to start up in DATA mode.
@@ -55,7 +55,7 @@ void displayBasedOnInput(String response) {
       questionsAnswered |= QUESTION_MASK_ONE;
       callFunction(1);
     }
-    else if (response == String("30")) {
+    else if (response == String("1 1 3 3 13 13") || response == String("11331313")) {
       questionsAnswered |= QUESTION_MASK_TWO;
       callFunction(2);
     }
@@ -63,11 +63,11 @@ void displayBasedOnInput(String response) {
       questionsAnswered |= QUESTION_MASK_THREE;
       callFunction(3);
     }
-    else if (response == String("COMMUNITY")) {
+    else if (response == String("3")) {
       questionsAnswered |= QUESTION_MASK_FOUR;
       callFunction(4);
     }
-    else if (response == String("COUNTERCLOCKWISE")) {
+    else if (response == String("LOW ENERGY")) {
       questionsAnswered |= QUESTION_MASK_SIX;
       //ChaseFlip goes clockwise...lol
       callFunction(6);
@@ -88,7 +88,7 @@ void displayBasedOnInput(String response) {
       questionsAnswered |= QUESTION_MASK_NINE;
       callFunction(9);
     }
-    else if (response == String("TRUE")) {
+    else if (response == String("40320")) {
       questionsAnswered |= QUESTION_MASK_TEN;
       callFunction(10);
     }
@@ -113,15 +113,15 @@ void displayBasedOnInput(String response) {
       questionsAnswered |= QUESTION_MASK_FIFTEEN;
       callFunction(15);
     } 
-    else if (response == String("U")) {
+    else if (response == String("STATIC")) {
       questionsAnswered |= QUESTION_MASK_SIXTEEN;
       callFunction(16);
     }
-    else if (response == String("SAN DIEGO")) {
+    else if (response == String("A")) {
       questionsAnswered |= QUESTION_MASK_SEVENTEEN;
       callFunction(17);
     } 
-    else if (response == String("LOW ENERGY")) {
+    else if (response == String("TRUE")) {
       questionsAnswered |= QUESTION_MASK_EIGHTEEN;
       callFunction(18);
     } else if (response.indexOf("LED") >= 0) {

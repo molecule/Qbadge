@@ -98,6 +98,9 @@ void loop() {
 //**********************************************************************************//
 //**********************************************************************************//
 
+// Read through this code, and figure out what's going on.
+// You'll need to make some changes (more info below) to get things to work...
+
 const uint16_t BIG_VALUE = 0x1DD7;
 const uint8_t SOMEWHAT_BIG_VALUE = 0x17;
 void puzzleOne() {
@@ -125,19 +128,24 @@ uint16_t buggy(uint8_t input) {
 // There are four parts to this puzzle. You'll have to solve all four to get the
 // answer!
 
-// Part 1: Clue from "most beautiful thingie"
+// Part 1: One of the constants in the "most beautiful equation"
 
-// Part 2: Clue from CT
+// Part 2: Talk with a member of the campus team to get the next value.
 
-// Part 3: Clue from place
+// Part 3: I spy the next value somewhere in this room...
 
-// Part 3: Clue from puzzle #1
+// Part 3: Puzzle Station #1 gave you some information...it's the same type
+// of information as the previous three parts, and if you put it all together,
+// it'll help you answer the question below.
 
 // Put it all together to answer this question:
 // What is the significance of this value as it relates to Grace Hopper?
-// Something new was created. Provide the name of that invention in puzzleTwo() below,
+// Something new was created by that magnificent Rear-Admiral. 
+// Provide the name of that invention in puzzleTwo() below,
 // then head over to Puzzle Station #2 to test your answer! If you get it right,
 // you'll see a new clue that will help you solve Puzzle #3.
+
+//  !!! REMEMBER TO CHANGE WHICH PUZZLE YOU'RE CALLING IN LOOP() !!!
 uint32_t A = 0xB;
 uint32_t B = 0xD;
 uint32_t C = 0x8;
