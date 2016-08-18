@@ -28,6 +28,9 @@
  * THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+ #include <HashMap.h>
+CreateHashMap(questions, String, uint32_t, 18);
+
 //******* Button *********//
 const int buttonPin = 8;  // #6 on port D, #8 on port B
 int switchPin = 9;        // #9 on port B
@@ -193,6 +196,10 @@ int mode = 0; // 0: answer questions, 1: send/receive IR
 void setup() {
   //Set up on-board LED
   pinMode(13, OUTPUT);
+
+  questions["QCOM"] = 1;
+  questions["1 1 3 3 13 13"] = 2;
+  questions["CDMA"] = 6;
 
   // Switch setup
   pinMode(switchPin, INPUT);
