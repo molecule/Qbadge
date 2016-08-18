@@ -141,7 +141,7 @@ uint16_t buggy(uint8_t input) {
 // Put it all together to answer this question:
 // What is the significance of this value as it relates to Grace Hopper?
 // Something new was created by that magnificent Rear-Admiral. 
-// Provide the name of that invention in puzzleTwo() below,
+// Provide your guess in puzzleTwo() below,
 // then head over to Puzzle Station #2 to test your answer! If you get it right,
 // you'll see a new clue that will help you solve Puzzle #3.
 
