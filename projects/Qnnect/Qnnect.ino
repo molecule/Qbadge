@@ -37,29 +37,34 @@ int switchPin = 9;        // #9 on port B
 int buttonVal = LOW;
 
 //******* Bluetooth ******//
+/*
+ * When we start up the Bluetooth module, we can talk with it in "AT" mode
+ * When we send an "AT" command, it may respond with one of these strings.
+ * These can be used to determine the state of the BLE module.
+ */
 String AT_COMMAND_RX_SUCCESSFUL = String("OK");
 String AT_COMMAND_RX_FAILED = String("ERROR");
 String AT_CONNECTION_ESTABLISHED = String("CONNECTED");
 
 //******** Questions *********** //
-uint32_t QUESTION_MASK_ONE = 0x01;
-uint32_t QUESTION_MASK_TWO = 0x02;
-uint32_t QUESTION_MASK_THREE = 0x04;
-uint32_t QUESTION_MASK_FOUR = 0x08;
-uint32_t QUESTION_MASK_FIVE = 0x10;
-uint32_t QUESTION_MASK_SIX = 0x20;
-uint32_t QUESTION_MASK_SEVEN = 0x40;
-uint32_t QUESTION_MASK_EIGHT = 0x80;
-uint32_t QUESTION_MASK_NINE = 0x100;
-uint32_t QUESTION_MASK_TEN = 0x200;
-uint32_t QUESTION_MASK_ELEVEN = 0x400;
-uint32_t QUESTION_MASK_TWELVE = 0x800;
-uint32_t QUESTION_MASK_THIRTEEN = 0x1000;
-uint32_t QUESTION_MASK_FOURTEEN = 0x2000;
-uint32_t QUESTION_MASK_FIFTEEN = 0x4000;
-uint32_t QUESTION_MASK_SIXTEEN = 0x8000;
-uint32_t QUESTION_MASK_SEVENTEEN = 0x10000;
-uint32_t QUESTION_MASK_EIGHTEEN = 0x20000;
+uint32_t QUESTION_MASK_ONE          = 0x01;
+uint32_t QUESTION_MASK_TWO          = 0x02;
+uint32_t QUESTION_MASK_THREE        = 0x04;
+uint32_t QUESTION_MASK_FOUR         = 0x08;
+uint32_t QUESTION_MASK_FIVE         = 0x10;
+uint32_t QUESTION_MASK_SIX          = 0x20;
+uint32_t QUESTION_MASK_SEVEN        = 0x40;
+uint32_t QUESTION_MASK_EIGHT        = 0x80;
+uint32_t QUESTION_MASK_NINE         = 0x100;
+uint32_t QUESTION_MASK_TEN          = 0x200;
+uint32_t QUESTION_MASK_ELEVEN       = 0x400;
+uint32_t QUESTION_MASK_TWELVE       = 0x800;
+uint32_t QUESTION_MASK_THIRTEEN     = 0x1000;
+uint32_t QUESTION_MASK_FOURTEEN     = 0x2000;
+uint32_t QUESTION_MASK_FIFTEEN      = 0x4000;
+uint32_t QUESTION_MASK_SIXTEEN      = 0x8000;
+uint32_t QUESTION_MASK_SEVENTEEN    = 0x10000;
+uint32_t QUESTION_MASK_EIGHTEEN     = 0x20000;
 
 uint32_t QUESTION_MASK_MAP[] = {
   0,
@@ -197,23 +202,46 @@ void setup() {
   //Set up on-board LED
   pinMode(13, OUTPUT);
 
-  questions["QCOM"] = 1;
-  questions["1 1 3 3 13 13"] = 2;
-  questions["MOLLENKOPF"] = 3;
-  questions["LOW ENERGY"] = 4;
-  questions["2"] = 5;
-  questions["CDMA"] = 6;
-  questions["STATIC"] = 8;
-  questions["NEGATIVE"] = 9;
-  questions["YIPPEE"] = 10;
-  questions["FIBONACCI"] = 11;
-  questions["14"] = 12;
-  questions["TRUE"] = 13;
-  questions["-39083"] = 14;
-  questions["A"] = 15;
-  questions["54"] = 16;
-  questions["MULTIPLY"] = 17;
-  questions["QUALCOMM"] = 18;
+/**
+ * This is the HashMap where we map question answers to the question number.
+ * The general format is: 
+ * 
+ *      questions[ "answer to question X in string format" ] = <which question this is for>
+ * 
+ * For instance, if the question booklet has this:
+ *      Q1: What is the stock ticker for Qualcomm?
+ * 
+ * Then the "questions" HashMap should look like this:
+ *      questions["QCOM"] = 1;
+ * 
+ * The strings must match exactly, so "qcom" would not be correct since it is lower-case.
+ * "q c o m" would also not match, and "q COM" would be wrong as well.
+ * The question answer and number should match what is in the question booklet.
+ * 
+ * If you changed the first question to this:
+ *      Q1: What does the “LE” in Bluetooth LE stand for?
+ *      
+ * The "questions" HashMap would need to be updated to look like this:
+ *      questions["LOW ENERGY"] = 1;
+ *      
+ */
+  questions["QCOM"]           = 1;
+  questions["1 1 3 3 13 13"]  = 2;
+  questions["MOLLENKOPF"]     = 3;
+  questions["LOW ENERGY"]     = 4;
+  questions["2"]              = 5;
+  questions["CDMA"]           = 6;
+  questions["STATIC"]         = 8;
+  questions["NEGATIVE"]       = 9;
+  questions["YIPPEE"]         = 10;
+  questions["FIBONACCI"]      = 11;
+  questions["14"]             = 12;
+  questions["TRUE"]           = 13;
+  questions["-39083"]         = 14;
+  questions["A"]              = 15;
+  questions["54"]             = 16;
+  questions["MULTIPLY"]       = 17;
+  questions["QUALCOMM"]       = 18;
 
   // Switch setup
   pinMode(switchPin, INPUT);
