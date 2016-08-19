@@ -199,7 +199,21 @@ void setup() {
 
   questions["QCOM"] = 1;
   questions["1 1 3 3 13 13"] = 2;
+  questions["MOLLENKOPF"] = 3;
+  questions["LOW ENERGY"] = 4;
+  questions["2"] = 5;
   questions["CDMA"] = 6;
+  questions["STATIC"] = 8;
+  questions["NEGATIVE"] = 9;
+  questions["YIPPEE"] = 10;
+  questions["FIBONACCI"] = 11;
+  questions["14"] = 12;
+  questions["TRUE"] = 13;
+  questions["-39083"] = 14;
+  questions["A"] = 15;
+  questions["54"] = 16;
+  questions["MULTIPLY"] = 17;
+  questions["QUALCOMM"] = 18;
 
   // Switch setup
   pinMode(switchPin, INPUT);
@@ -229,26 +243,46 @@ void setup() {
   // initialize array to all zeros
   memset(pixelColors,0,sizeof(pixelColors));
 
-  // initializes the array of function pointers.
+  /** 
+  * These are basically pointers to all of the functions that control the LEDs.
+  * This way we can reference the functions with numbers, instead of calling them
+  * by name directly.
+  * 
+  * This makes it easier to call a function based on the question number.
+  * If you want to call "chaseHotPink", for instance, you use the "callFunction" method
+  * passing in the index where "chaseHotPink" was saved in the array:
+  * 
+  * callFunction(4);
+  * 
+  * That is the same as calling chaseHotPink directly.
+  * 
+  * So we can use the HashMap from question answers to question numbers to call
+  * the right function for that question.
+  * 
+  */ 
   functionPtrs[0] = chase;
-  functionPtrs[1] = chaseLime;
-  functionPtrs[2] = chaseHotPink;
-  functionPtrs[3] = chaseTurquoise;
-  functionPtrs[4] = mediumOrchidAlternate;
-  functionPtrs[5] = mediumOrchidBlueAlternate;
-  functionPtrs[6] = chaseFlip;
-  functionPtrs[7] = callSmiley;
-  functionPtrs[8] = sparklePurple;
-  functionPtrs[9] = white_flash_fade;
-  functionPtrs[10] = glitter;
-  functionPtrs[11] = rainbow_replace;
-  functionPtrs[12] = rainbow_sparks;
-  functionPtrs[13] = blue_sparkles;
-  functionPtrs[14] = rainbowCycle;
-  functionPtrs[15] = chaseYellowOrange;
-  functionPtrs[16] = multi_color_blue_yellow;
-  functionPtrs[17] = generate_rotation;
-  functionPtrs[18] = multi_color_blue_green;
+  functionPtrs[1] = chaseTurquoise;
+  functionPtrs[2] = chaseLime;
+  functionPtrs[3] = callSmiley;
+  functionPtrs[4] = chaseHotPink;
+  functionPtrs[5] = rainbow_replace;
+  functionPtrs[6] = mediumOrchidBlueAlternate;
+  functionPtrs[7] = chaseFlip;
+  functionPtrs[8] = white_flash_fade;
+  functionPtrs[9] = multi_color_blue_yellow;
+  functionPtrs[10] = generate_rotation;
+  functionPtrs[11] = multi_color_blue_green;
+  functionPtrs[12] = chaseYellowOrange;
+  functionPtrs[13] = mediumOrchidAlternate;
+  functionPtrs[14] = sparklePurple;
+  functionPtrs[15] = glitter;
+  functionPtrs[16] = rainbow_sparks;
+  functionPtrs[17] = blue_sparkles;
+  functionPtrs[18] = rainbowCycle;
+  
+  
+  
+  
   functionPtrs[99] = red_flash;
 
   // Bluetooth setup
