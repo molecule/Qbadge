@@ -66,6 +66,23 @@ uint32_t QUESTION_MASK_SIXTEEN      = 0x8000;
 uint32_t QUESTION_MASK_SEVENTEEN    = 0x10000;
 uint32_t QUESTION_MASK_EIGHTEEN     = 0x20000;
 
+/*
+ * This maps from an index to the bit-mask used to check if that
+ * index is turned on (and to turn it on). This is the main reason
+ * everything in here starts from "1" instead of "0", because it is 
+ * difficult to do a bit-mask check against all zeroes.
+ * 
+ * If you want to indicate that someone got question 3 correct:
+ * 
+ *      questionsAnswered |= QUESTION_MASK_MAP[3];
+ * 
+ * If you want to ask whether someone got question 5 correct:
+ * 
+ *      if (questionsAnswered | QUESTION_MASK_MAP[5] == QUESTION_MASK_MAP[5]) {
+ *        return true;
+ *      }
+ * 
+ */
 uint32_t QUESTION_MASK_MAP[] = {
   0,
   QUESTION_MASK_ONE,
@@ -182,7 +199,6 @@ uint16_t currentpulse = 0; // index for pulses we're storing
 uint32_t irCode = 0;
 
 //********* IR Send *********//
-
 const uint32_t IR_REMOTE_POWER     = 0x8322A15E;
 const uint32_t IR_REMOTE_V_DOWN    = 0x8322A35C;
 const uint32_t IR_REMOTE_MODE      = 0x8322B24D;
@@ -248,6 +264,13 @@ void setup() {
   last_switch_value = digitalRead(switchPin);
   switch_value = last_switch_value;
 
+  /*
+   * Reads the value of the "mode switch" on the left-hand side of
+   * the Qbadge to either do "networking" mode, or "question quest" mode.
+   * 
+   * Also sets the on-board LED appropriately so we can see at a glance
+   * which mode we're in.
+   */
   if (last_switch_value == HIGH) {
     mode = 1;
     digitalWrite(13, HIGH);
