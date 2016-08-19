@@ -257,7 +257,8 @@ void setup() {
   * That is the same as calling chaseHotPink directly.
   * 
   * So we can use the HashMap from question answers to question numbers to call
-  * the right function for that question.
+  * the right function for that question. Note that the function at location "zero"
+  * is the "chase" function that turns all of the LEDs off.
   * 
   */ 
   functionPtrs[0] = chase;
@@ -280,9 +281,12 @@ void setup() {
   functionPtrs[17] = blue_sparkles;
   functionPtrs[18] = rainbowCycle;
   
-  
-  
-  
+  /*
+   * red_flash is set to location 99 so it's always in a known location.
+   *
+   * This function gets called whenever someone gets a question incorrect.
+   *
+   */
   functionPtrs[99] = red_flash;
 
   // Bluetooth setup
