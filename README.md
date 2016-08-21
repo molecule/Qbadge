@@ -89,8 +89,9 @@ https://github.com/z3t0/Arduino-IRremote/releases
 5. Load the bootloader by dragging the latest copy of the bootloader (ble_dfu_4.hex) to the "MBED" device connected to the computer. Note that it will disconnet itself from the computer, and the computer may complain about not safely ejecting the device, but it's expected behavior:
   <img style="float: center;" src="http://i.imgur.com/Z6qEdkG.jpg?1">
 
-#### Upload firmware to the Nano
+#### Upload firmware to the Nano (instructions for Android)
 1. Download nRF Toolbox:
+  <img style="float: center;" src="http://i.imgur.com/KzxPDtX.jpg?1">
 2. Click on "DFU"
 3. Click on "Select file"
 4. Select Distribution Package (ZIP) and then click "OK"
