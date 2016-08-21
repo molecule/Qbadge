@@ -66,9 +66,28 @@ https://github.com/z3t0/Arduino-IRremote/releases
 
 ### Working with the BLE Nano
 #### Upload the custom bootloader to the Nano
-1. Connect the BLE device (VDD, GND, DIO, DCLK):
-2. Load firmware:
-3. Test device:
+1. Disconnect all the wires from the Qbadge:
+  <img style="float: center;" src="http://i.imgur.com/sdXwdAV.jpg?1">
+2. Get 4 male-female jumper wires. Plug in the male end of the wires to the BLE-USB dongle:
+
+  ```
+  Orange wire --> VDD
+  Blue wire --> GND
+  Yellow wire --> DIO
+  Green wire --> DCLK
+  
+  ```
+
+  <img style="float: center;" src="http://i.imgur.com/7FwELPN.jpg?1">
+  <img style="float: center;" src="http://i.imgur.com/gLyCw95.jpg?1">
+3. While the USB dongle is disconnected from the computer, connect the BLE device by connecting the female end of the wires to the Qbadge as shown:
+  <img style="float: center;" src="http://i.imgur.com/0LCUHoq.jpg?1">
+  <img style="float: center;" src="http://i.imgur.com/d2T8pdt.jpg?1">
+  <img style="float: center;" src="http://i.imgur.com/GHzqiw5.jpg?1">
+4. Connect the USB dongle to the computer:
+  <img style="float: center;" src="http://i.imgur.com/OpSUDMB.jpg?1">
+5. Load the bootloader by dragging the latest copy of the bootloader (ble_dfu_4.hex) to the "MBED" device connected to the computer. Note that it will disconnet itself from the computer, and the computer may complain about not safely ejecting the device, but it's expected behavior:
+  <img style="float: center;" src="http://i.imgur.com/Z6qEdkG.jpg?1">
 
 #### Upload firmware to the Nano
 1. Download nRF Toolbox:
