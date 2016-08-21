@@ -64,6 +64,24 @@ And the IR Remote library (be sure to download V1.0):
 
 https://github.com/z3t0/Arduino-IRremote/releases
 
+### Working with the BLE Nano
+#### Upload the custom bootloader to the Nano
+1. Connect the BLE device (VDD, GND, DIO, DCLK):
+2. Load firmware:
+3. Test device:
+
+#### Upload firmware to the Nano
+1. Download nRF Toolbox:
+2. Click on "DFU"
+3. Click on "Select file"
+4. Select Distribution Package (ZIP) and then click "OK"
+5. Click on Dropbox
+6. Select the file (latest ble_qbadge_x.zip file)
+7. Click on "Select device"
+8. Device name should be DFUTARG
+9. Click "Upload"
+10. Wait until it is finished successfully.
+
 ###Helpful Guides
 
 Info for installing Arduino libraries:
