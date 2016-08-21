@@ -1,21 +1,17 @@
 #Qbadge
 
-##Enjoy your Qbadge!
+##Helpful videos
+[How to open, close, and power on your Qbadge](https://www.youtube.com/watch?v=6eYyS4wtiWs)
 
-This little wearable is so much more than it first appears… At this exclusive event you’ll discover just how much you can do with hardware. Especially when it’s combined with the power of a community board like Qualcomm’s 410c Dragonboard. The Internet of Things awaits… 
+[Networking mode demo](https://www.youtube.com/watch?v=jLXpunxlupk)
 
-##Guided tour
+[Question Quest mode demo](https://www.youtube.com/watch?v=DJcJaX-GzcY)
 
-Aside from the beautiful LEDs, the Qbadge also has lots of ways to communicate. The front of the Qbadge has an infrared receiver, an intrared transmitter, a button to trigger an action, and a microphone. 
+[Switching modes](https://www.youtube.com/watch?v=-lT2BPnJW98)
 
-<img style="float: center;" src="http://i.imgur.com/TSINq4r.png">
 
-On the inside, there’s also a BLE module tucked away beneath the main processor board.
-
-<img style="float: center;" src="http://i.imgur.com/JZkmjEx.png">
-
-## Set up your computer to work with the Gemma boards
-### 1. The first step is to download and install the drivers.
+## Set up your computer to work with the Pro Trinket boards
+### 1. Download and install the drivers (only needed for Window computers, not Macs).
 
 a. Go to [download the drivers from Adafruit](https://learn.adafruit.com/adafruit-arduino-ide-setup/windows-setup).
 
@@ -23,15 +19,15 @@ OR
 
 a. Go to [codebender.cc](Codebender.cc). Register a new account. Create a new profile and just go through each of the steps. It will download and install the drivers.
 
-c. When it asks you for the board, select the Adafruit Gemma 8MHz made by Adafruit. It will 
+c. When it asks you for the board, select the Adafruit Pro Trinket 3.3v 12MHz made by Adafruit. It will 
 automatically select the correct programmer, which is USBTinyISP. NOTE: You can stop after the drivers
 have installed, OR you can go all the way to the end of the "Getting Started" sequence, and load 
-“blink” onto your Gemma as a test. Don't forget to put your Gemma into "Bootloader" mode by pressing
+“blink” onto your Pro Trinket as a test. Don't forget to put your Pro Trinket into "Bootloader" mode by pressing
 the "reset" button on the board.
 
 <img style="float: center;" src="http://i.imgur.com/S5buZln.png">
 
-### 2. Follow these instructions to download and install the Integrated Development Environment (IDE). 
+### Download and install the Integrated Development Environment (IDE). 
 
 An "IDE" is basically a fancy text editor that you will use to make changes to the code. Similar to how Microsoft Word is a place to type letters, essays, etc, in your IDE you'll type code!
 
@@ -45,16 +41,9 @@ https://learn.adafruit.com/adafruit-arduino-ide-setup/arduino-1-dot-6-x-ide
 c. NOTE: You don't need to download the drivers, or do the "Easy Installation." 
 Once you've added the "Contributed boards" you are finished with this step.
 
-### 3. You also need to install the Adafruit Neopixel library. Follow instructions here:
+### Install libraries.
+You also need to install the Adafruit Neopixel library. Follow instructions here:
 https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
-
-To load code onto your Qbadge, you can use a site called "CodeBender":
-
-https://codebender.cc/
-
-Follow these instructions to install the IDE to work with the Pro Trinket inside your Qbadge:
-
-https://learn.adafruit.com/introducing-pro-trinket/starting-the-bootloader
 
 You'll also need the Adafruit Neopixel library: 
 
@@ -91,6 +80,7 @@ https://github.com/z3t0/Arduino-IRremote/releases
 
 #### Upload firmware to the Nano (instructions for Android)
 1. Download nRF Toolbox:
+
   <img style="float: center;" src="http://i.imgur.com/KzxPDtX.jpg?1">
 2. Click on "DFU"
 3. Click on "Select file"
@@ -101,6 +91,7 @@ https://github.com/z3t0/Arduino-IRremote/releases
 8. Device name should be DFUTARG
 9. Click "Upload"
 10. Wait until it is finished successfully.
+11. The Arduino code will update the advertising name of the Qbadge as soon as it's turned on.
 
 ###Helpful Guides
 
@@ -117,12 +108,4 @@ Info about the BLE Nano inside the Qbadge:
 http://redbearlab.com/blenano/
 
 
-##Helpful videos
-How to open, close, and power on your Qbadge:
-https://www.youtube.com/watch?v=6eYyS4wtiWs
 
-Networking mode demo:
-https://www.youtube.com/watch?v=jLXpunxlupk
-
-Question Quest mode demo:
-https://www.youtube.com/watch?v=DJcJaX-GzcY
