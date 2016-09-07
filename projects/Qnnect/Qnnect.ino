@@ -28,36 +28,61 @@
  * THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+ #include <HashMap.h>
+CreateHashMap(questions, String, uint32_t, 18);
+
 //******* Button *********//
 const int buttonPin = 8;  // #6 on port D, #8 on port B
 int switchPin = 9;        // #9 on port B
 int buttonVal = LOW;
 
 //******* Bluetooth ******//
+/*
+ * When we start up the Bluetooth module, we can talk with it in "AT" mode
+ * When we send an "AT" command, it may respond with one of these strings.
+ * These can be used to determine the state of the BLE module.
+ */
 String AT_COMMAND_RX_SUCCESSFUL = String("OK");
 String AT_COMMAND_RX_FAILED = String("ERROR");
 String AT_CONNECTION_ESTABLISHED = String("CONNECTED");
 
 //******** Questions *********** //
-uint32_t QUESTION_MASK_ONE = 0x01;
-uint32_t QUESTION_MASK_TWO = 0x02;
-uint32_t QUESTION_MASK_THREE = 0x04;
-uint32_t QUESTION_MASK_FOUR = 0x08;
-uint32_t QUESTION_MASK_FIVE = 0x10;
-uint32_t QUESTION_MASK_SIX = 0x20;
-uint32_t QUESTION_MASK_SEVEN = 0x40;
-uint32_t QUESTION_MASK_EIGHT = 0x80;
-uint32_t QUESTION_MASK_NINE = 0x100;
-uint32_t QUESTION_MASK_TEN = 0x200;
-uint32_t QUESTION_MASK_ELEVEN = 0x400;
-uint32_t QUESTION_MASK_TWELVE = 0x800;
-uint32_t QUESTION_MASK_THIRTEEN = 0x1000;
-uint32_t QUESTION_MASK_FOURTEEN = 0x2000;
-uint32_t QUESTION_MASK_FIFTEEN = 0x4000;
-uint32_t QUESTION_MASK_SIXTEEN = 0x8000;
-uint32_t QUESTION_MASK_SEVENTEEN = 0x10000;
-uint32_t QUESTION_MASK_EIGHTEEN = 0x20000;
+uint32_t QUESTION_MASK_ONE          = 0x01;
+uint32_t QUESTION_MASK_TWO          = 0x02;
+uint32_t QUESTION_MASK_THREE        = 0x04;
+uint32_t QUESTION_MASK_FOUR         = 0x08;
+uint32_t QUESTION_MASK_FIVE         = 0x10;
+uint32_t QUESTION_MASK_SIX          = 0x20;
+uint32_t QUESTION_MASK_SEVEN        = 0x40;
+uint32_t QUESTION_MASK_EIGHT        = 0x80;
+uint32_t QUESTION_MASK_NINE         = 0x100;
+uint32_t QUESTION_MASK_TEN          = 0x200;
+uint32_t QUESTION_MASK_ELEVEN       = 0x400;
+uint32_t QUESTION_MASK_TWELVE       = 0x800;
+uint32_t QUESTION_MASK_THIRTEEN     = 0x1000;
+uint32_t QUESTION_MASK_FOURTEEN     = 0x2000;
+uint32_t QUESTION_MASK_FIFTEEN      = 0x4000;
+uint32_t QUESTION_MASK_SIXTEEN      = 0x8000;
+uint32_t QUESTION_MASK_SEVENTEEN    = 0x10000;
+uint32_t QUESTION_MASK_EIGHTEEN     = 0x20000;
 
+/*
+ * This maps from an index to the bit-mask used to check if that
+ * index is turned on (and to turn it on). This is the main reason
+ * everything in here starts from "1" instead of "0", because it is 
+ * difficult to do a bit-mask check against all zeroes.
+ * 
+ * If you want to indicate that someone got question 3 correct:
+ * 
+ *      questionsAnswered |= QUESTION_MASK_MAP[3];
+ * 
+ * If you want to ask whether someone got question 5 correct:
+ * 
+ *      if (questionsAnswered | QUESTION_MASK_MAP[5] == QUESTION_MASK_MAP[5]) {
+ *        return true;
+ *      }
+ * 
+ */
 uint32_t QUESTION_MASK_MAP[] = {
   0,
   QUESTION_MASK_ONE,
@@ -174,7 +199,6 @@ uint16_t currentpulse = 0; // index for pulses we're storing
 uint32_t irCode = 0;
 
 //********* IR Send *********//
-
 const uint32_t IR_REMOTE_POWER     = 0x8322A15E;
 const uint32_t IR_REMOTE_V_DOWN    = 0x8322A35C;
 const uint32_t IR_REMOTE_MODE      = 0x8322B24D;
@@ -194,11 +218,59 @@ void setup() {
   //Set up on-board LED
   pinMode(13, OUTPUT);
 
+/**
+ * This is the HashMap where we map question answers to the question number.
+ * The general format is: 
+ * 
+ *      questions[ "answer to question X in string format" ] = <which question this is for>
+ * 
+ * For instance, if the question booklet has this:
+ *      Q1: What is the stock ticker for Qualcomm?
+ * 
+ * Then the "questions" HashMap should look like this:
+ *      questions["QCOM"] = 1;
+ * 
+ * The strings must match exactly, so "qcom" would not be correct since it is lower-case.
+ * "q c o m" would also not match, and "q COM" would be wrong as well.
+ * The question answer and number should match what is in the question booklet.
+ * 
+ * If you changed the first question to this:
+ *      Q1: What does the “LE” in Bluetooth LE stand for?
+ *      
+ * The "questions" HashMap would need to be updated to look like this:
+ *      questions["LOW ENERGY"] = 1;
+ *      
+ */
+  questions["QCOM"]           = 1;
+  questions["1 1 3 3 13 13"]  = 2;
+  questions["MOLLENKOPF"]     = 3;
+  questions["LOW ENERGY"]     = 4;
+  questions["2"]              = 5;
+  questions["CDMA"]           = 6;
+  questions["STATIC"]         = 8;
+  questions["NEGATIVE"]       = 9;
+  questions["YIPPEE"]         = 10;
+  questions["FIBONACCI"]      = 11;
+  questions["14"]             = 12;
+  questions["TRUE"]           = 13;
+  questions["-39083"]         = 14;
+  questions["A"]              = 15;
+  questions["54"]             = 16;
+  questions["MULTIPLY"]       = 17;
+  questions["QUALCOMM"]       = 18;
+
   // Switch setup
   pinMode(switchPin, INPUT);
   last_switch_value = digitalRead(switchPin);
   switch_value = last_switch_value;
 
+  /*
+   * Reads the value of the "mode switch" on the left-hand side of
+   * the Qbadge to either do "networking" mode, or "question quest" mode.
+   * 
+   * Also sets the on-board LED appropriately so we can see at a glance
+   * which mode we're in.
+   */
   if (last_switch_value == HIGH) {
     mode = 1;
     digitalWrite(13, HIGH);
@@ -222,26 +294,50 @@ void setup() {
   // initialize array to all zeros
   memset(pixelColors,0,sizeof(pixelColors));
 
-  // initializes the array of function pointers.
+  /** 
+  * These are basically pointers to all of the functions that control the LEDs.
+  * This way we can reference the functions with numbers, instead of calling them
+  * by name directly.
+  * 
+  * This makes it easier to call a function based on the question number.
+  * If you want to call "chaseHotPink", for instance, you use the "callFunction" method
+  * passing in the index where "chaseHotPink" was saved in the array:
+  * 
+  * callFunction(4);
+  * 
+  * That is the same as calling chaseHotPink directly.
+  * 
+  * So we can use the HashMap from question answers to question numbers to call
+  * the right function for that question. Note that the function at location "zero"
+  * is the "chase" function that turns all of the LEDs off.
+  * 
+  */ 
   functionPtrs[0] = chase;
-  functionPtrs[1] = chaseLime;
-  functionPtrs[2] = chaseHotPink;
-  functionPtrs[3] = chaseTurquoise;
-  functionPtrs[4] = mediumOrchidAlternate;
-  functionPtrs[5] = mediumOrchidBlueAlternate;
-  functionPtrs[6] = chaseFlip;
-  functionPtrs[7] = callSmiley;
-  functionPtrs[8] = sparklePurple;
-  functionPtrs[9] = white_flash_fade;
-  functionPtrs[10] = glitter;
-  functionPtrs[11] = rainbow_replace;
-  functionPtrs[12] = rainbow_sparks;
-  functionPtrs[13] = blue_sparkles;
-  functionPtrs[14] = rainbowCycle;
-  functionPtrs[15] = chaseYellowOrange;
-  functionPtrs[16] = multi_color_blue_yellow;
-  functionPtrs[17] = generate_rotation;
-  functionPtrs[18] = multi_color_blue_green;
+  functionPtrs[1] = chaseTurquoise;
+  functionPtrs[2] = chaseLime;
+  functionPtrs[3] = callSmiley;
+  functionPtrs[4] = chaseHotPink;
+  functionPtrs[5] = rainbow_replace;
+  functionPtrs[6] = mediumOrchidBlueAlternate;
+  functionPtrs[7] = chaseFlip;
+  functionPtrs[8] = white_flash_fade;
+  functionPtrs[9] = multi_color_blue_yellow;
+  functionPtrs[10] = generate_rotation;
+  functionPtrs[11] = multi_color_blue_green;
+  functionPtrs[12] = chaseYellowOrange;
+  functionPtrs[13] = mediumOrchidAlternate;
+  functionPtrs[14] = sparklePurple;
+  functionPtrs[15] = glitter;
+  functionPtrs[16] = rainbow_sparks;
+  functionPtrs[17] = blue_sparkles;
+  functionPtrs[18] = rainbowCycle;
+  
+  /*
+   * red_flash is set to location 99 so it's always in a known location.
+   *
+   * This function gets called whenever someone gets a question incorrect.
+   *
+   */
   functionPtrs[99] = red_flash;
 
   // Bluetooth setup
