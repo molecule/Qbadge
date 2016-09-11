@@ -42,16 +42,20 @@ c. NOTE: You don't need to download the drivers, or do the "Easy Installation."
 Once you've added the "Contributed boards" you are finished with this step.
 
 ### Install libraries.
-You also need to install the Adafruit Neopixel library. Follow instructions here:
+You also need to install a few different libraries. To learn how to add libraries, check out Adafruit's instructions here:
+
+https://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use
+
+You'll need the Adafruit Neopixel library: 
+
 https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
-
-You'll also need the Adafruit Neopixel library: 
-
-https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library
 
 And the IR Remote library (be sure to download V1.0):
 
 https://github.com/z3t0/Arduino-IRremote/releases
+
+### Uploading code to the Qbadge
+(Video available soon...)
 
 ### Working with the BLE Nano
 #### Upload the custom bootloader to the Nano
