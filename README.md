@@ -55,6 +55,7 @@ And the IR Remote library (be sure to download V1.0):
 https://github.com/z3t0/Arduino-IRremote/releases
 
 ### Uploading code to the Qbadge
+1. Setup the IDE. The board should be "Adafruit Pro Trinket 3.3v 12MHz" made by Adafruit. The programmer is USBTinyISP.
 (Video available soon...)
 
 ### Working with the BLE Nano
