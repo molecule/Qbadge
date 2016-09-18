@@ -54,6 +54,57 @@ void displayBasedOnInput(String response) {
     } else if (response == String("QCOM")) {
       questionsAnswered |= QUESTION_MASK_ONE;
       callFunction(1);
+    } else if (response == String("1 2 3 4 5 6 7")) {
+      questionsAnswered |= QUESTION_MASK_TWO;
+      callFunction(2);
+    } else if (response == String("MOLLENKOPF")) {
+      questionsAnswered |= QUESTION_MASK_THREE;
+      callFunction(3);
+    } else if (response == String("LOW ENERGY")) {
+      questionsAnswered |= QUESTION_MASK_FOUR;
+      callFunction(4);
+    } else if (response == String("2")) {
+      questionsAnswered |= QUESTION_MASK_FIVE;
+      callFunction(5);
+    } else if (response == String("CDMA")) {
+      questionsAnswered |= QUESTION_MASK_SIX;
+      callFunction(6);
+    } else if (response == String("6")) {
+      questionsAnswered |= QUESTION_MASK_SEVEN;
+      callFunction(7);
+    } else if (response == String("STATIC")) {
+      questionsAnswered |= QUESTION_MASK_EIGHT;
+      callFunction(8);
+    } else if (response == String("NEGATIVE")) {
+      questionsAnswered |= QUESTION_MASK_NINE;
+      callFunction(9);
+    } else if (response == String("YIPPEE")) {
+      questionsAnswered |= QUESTION_MASK_TEN;
+      callFunction(10);
+    } else if (response == String("FIBONACCI")) {
+      questionsAnswered |= QUESTION_MASK_ELEVEN;
+      callFunction(11);
+    } else if (response == String("NAND")) {
+      questionsAnswered |= QUESTION_MASK_TWELVE;
+      callFunction(12);
+    } else if (response == String("TRUE")) {
+      questionsAnswered |= QUESTION_MASK_THIRTEEN;
+      callFunction(13);
+    } else if (response == String("-39083")) {
+      questionsAnswered |= QUESTION_MASK_FOURTEEN;
+      callFunction(14);
+    } else if (response == String("BAD4")) {
+      questionsAnswered |= QUESTION_MASK_FIFTEEN;
+      callFunction(15);
+    } else if (response == String("11101010")) {
+      questionsAnswered |= QUESTION_MASK_SIXTEEN;
+      callFunction(16);
+    } else if (response == String("MULTIPLY")) {
+      questionsAnswered |= QUESTION_MASK_SEVENTEEN;
+      callFunction(17);
+    } else if (response == String("SNAPDRAGON")) {
+      questionsAnswered |= QUESTION_MASK_EIGHTEEN;
+      callFunction(18);
     } else if (response.indexOf("LED") >= 0) {
       int index = response.indexOf("LED");
       response.remove(index, 3);
