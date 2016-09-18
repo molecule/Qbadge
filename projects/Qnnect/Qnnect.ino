@@ -28,9 +28,6 @@
  * THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
- #include <HashMap.h>
-CreateHashMap(questions, String, uint32_t, 18);
-
 //******* Button *********//
 const int buttonPin = 8;  // #6 on port D, #8 on port B
 int switchPin = 9;        // #9 on port B
@@ -217,47 +214,6 @@ int mode = 0; // 0: answer questions, 1: send/receive IR
 void setup() {
   //Set up on-board LED
   pinMode(13, OUTPUT);
-
-/**
- * This is the HashMap where we map question answers to the question number.
- * The general format is: 
- * 
- *      questions[ "answer to question X in string format" ] = <which question this is for>
- * 
- * For instance, if the question booklet has this:
- *      Q1: What is the stock ticker for Qualcomm?
- * 
- * Then the "questions" HashMap should look like this:
- *      questions["QCOM"] = 1;
- * 
- * The strings must match exactly, so "qcom" would not be correct since it is lower-case.
- * "q c o m" would also not match, and "q COM" would be wrong as well.
- * The question answer and number should match what is in the question booklet.
- * 
- * If you changed the first question to this:
- *      Q1: What does the “LE” in Bluetooth LE stand for?
- *      
- * The "questions" HashMap would need to be updated to look like this:
- *      questions["LOW ENERGY"] = 1;
- *      
- */
-  questions["QCOM"]           = 1;
-  questions["1 1 3 3 13 13"]  = 2;
-  questions["MOLLENKOPF"]     = 3;
-  questions["LOW ENERGY"]     = 4;
-  questions["2"]              = 5;
-  questions["CDMA"]           = 6;
-  questions["STATIC"]         = 8;
-  questions["NEGATIVE"]       = 9;
-  questions["YIPPEE"]         = 10;
-  questions["FIBONACCI"]      = 11;
-  questions["14"]             = 12;
-  questions["TRUE"]           = 13;
-  questions["-39083"]         = 14;
-  questions["A"]              = 15;
-  questions["54"]             = 16;
-  questions["MULTIPLY"]       = 17;
-  questions["QUALCOMM"]       = 18;
 
   // Switch setup
   pinMode(switchPin, INPUT);

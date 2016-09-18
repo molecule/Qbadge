@@ -51,27 +51,24 @@ void displayBasedOnInput(String response) {
     } else if(response==AT_CONNECTION_ESTABLISHED) {
       chasePersist(strip.numPixels(), purple);
       callFunction(0);
+    } else if (response == String("QCOM")) {
+      questionsAnswered |= QUESTION_MASK_ONE;
+      callFunction(1);
     } else if (response.indexOf("LED") >= 0) {
-        int index = response.indexOf("LED");
-        response.remove(index, 3);
-        for (int i = 0; i < questions.size(); i++) {
-          if (questions.valueAt(i) == response.toInt()) {
-            // LEDs are indexed starting from 0. But because of the
-            // masking to get the correct questions, we index the 
-            // questions from 1. So to translate from question index to LED index
-            // we subtract zero here.
-            sparkleOneFadeToBlack(response.toInt()-1);
-          }
-        }
-        return;
-    } else if (questions.contains(response)) {
-        uint32_t questionNumber = questions[response];
-        questionsAnswered |= QUESTION_MASK_MAP[questionNumber];
-        callFunction(questionNumber);
-        callFunction(0);
+      int index = response.indexOf("LED");
+      response.remove(index, 3);
+      // LEDs are indexed starting from 0. But because of the
+      // masking to get the correct questions, we index the 
+      // questions from 1. So to translate from question index to LED index
+      // we subtract zero here.
+      //todo: minus one here??
+      sparkleOneFadeToBlack(response.toInt());
+      reportCorrectQuestions();
+      return;
     } else {
       callFunction(99);
     }
+    callFunction(0);
     reportCorrectQuestions();
     //bluetoothbluetoothSerial.println(readString);
   }
