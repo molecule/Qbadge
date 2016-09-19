@@ -54,7 +54,7 @@ void displayBasedOnInput(String response) {
     } else if (response == String("QCOM")) {
       questionsAnswered |= QUESTION_MASK_ONE;
       callFunction(1);
-    } else if (response == String("1 2 3 4 5 6 7")) {
+    } else if (response == String("1 3 5")) {
       questionsAnswered |= QUESTION_MASK_TWO;
       callFunction(2);
     } else if (response == String("MOLLENKOPF")) {
